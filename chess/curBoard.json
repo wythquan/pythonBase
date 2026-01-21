@@ -1,0 +1,274 @@
+{
+    "a": {
+        "1": {
+            "square": "black",
+            "piece": null
+        },
+        "2": {
+            "square": "white",
+            "piece": null
+        },
+        "3": {
+            "square": "black",
+            "piece": null
+        },
+        "4": {
+            "square": "white",
+            "piece": null
+        },
+        "5": {
+            "square": "black",
+            "piece": null
+        },
+        "6": {
+            "square": "white",
+            "piece": null
+        },
+        "7": {
+            "square": "black",
+            "piece": null
+        },
+        "8": {
+            "square": "white",
+            "piece": null
+        }
+    },
+    "b": {
+        "1": {
+            "square": "white",
+            "piece": null
+        },
+        "2": {
+            "square": "black",
+            "piece": null
+        },
+        "3": {
+            "square": "white",
+            "piece": null
+        },
+        "4": {
+            "square": "black",
+            "piece": null
+        },
+        "5": {
+            "square": "white",
+            "piece": null
+        },
+        "6": {
+            "square": "black",
+            "piece": null
+        },
+        "7": {
+            "square": "white",
+            "piece": null
+        },
+        "8": {
+            "square": "black",
+            "piece": null
+        }
+    },
+    "c": {
+        "1": {
+            "square": "black",
+            "piece": null
+        },
+        "2": {
+            "square": "white",
+            "piece": null
+        },
+        "3": {
+            "square": "black",
+            "piece": null
+        },
+        "4": {
+            "square": "white",
+            "piece": null
+        },
+        "5": {
+            "square": "black",
+            "piece": null
+        },
+        "6": {
+            "square": "white",
+            "piece": null
+        },
+        "7": {
+            "square": "black",
+            "piece": null
+        },
+        "8": {
+            "square": "white",
+            "piece": null
+        }
+    },
+    "d": {
+        "1": {
+            "square": "white",
+            "piece": null
+        },
+        "2": {
+            "square": "black",
+            "piece": null
+        },
+        "3": {
+            "square": "white",
+            "piece": null
+        },
+        "4": {
+            "square": "black",
+            "piece": null
+        },
+        "5": {
+            "square": "white",
+            "piece": null
+        },
+        "6": {
+            "square": "black",
+            "piece": null
+        },
+        "7": {
+            "square": "white",
+            "piece": null
+        },
+        "8": {
+            "square": "black",
+            "piece": null
+        }
+    },
+    "e": {
+        "1": {
+            "square": "black",
+            "piece": null
+        },
+        "2": {
+            "square": "white",
+            "piece": null
+        },
+        "3": {
+            "square": "black",
+            "piece": null
+        },
+        "4": {
+            "square": "white",
+            "piece": null
+        },
+        "5": {
+            "square": "black",
+            "piece": null
+        },
+        "6": {
+            "square": "white",
+            "piece": null
+        },
+        "7": {
+            "square": "black",
+            "piece": null
+        },
+        "8": {
+            "square": "white",
+            "piece": null
+        }
+    },
+    "f": {
+        "1": {
+            "square": "white",
+            "piece": null
+        },
+        "2": {
+            "square": "black",
+            "piece": null
+        },
+        "3": {
+            "square": "white",
+            "piece": null
+        },
+        "4": {
+            "square": "black",
+            "piece": null
+        },
+        "5": {
+            "square": "white",
+            "piece": null
+        },
+        "6": {
+            "square": "black",
+            "piece": null
+        },
+        "7": {
+            "square": "white",
+            "piece": null
+        },
+        "8": {
+            "square": "black",
+            "piece": null
+        }
+    },
+    "g": {
+        "1": {
+            "square": "black",
+            "piece": null
+        },
+        "2": {
+            "square": "white",
+            "piece": null
+        },
+        "3": {
+            "square": "black",
+            "piece": null
+        },
+        "4": {
+            "square": "white",
+            "piece": null
+        },
+        "5": {
+            "square": "black",
+            "piece": null
+        },
+        "6": {
+            "square": "white",
+            "piece": null
+        },
+        "7": {
+            "square": "black",
+            "piece": null
+        },
+        "8": {
+            "square": "white",
+            "piece": null
+        }
+    },
+    "h": {
+        "1": {
+            "square": "white",
+            "piece": null
+        },
+        "2": {
+            "square": "black",
+            "piece": null
+        },
+        "3": {
+            "square": "white",
+            "piece": null
+        },
+        "4": {
+            "square": "black",
+            "piece": null
+        },
+        "5": {
+            "square": "white",
+            "piece": null
+        },
+        "6": {
+            "square": "black",
+            "piece": null
+        },
+        "7": {
+            "square": "white",
+            "piece": null
+        },
+        "8": {
+            "square": "black",
+            "piece": null
+        }
+    }
+}
