@@ -1,0 +1,276 @@
+{
+    "a": {
+        "1": {
+            "square": "black",
+            "piece": "WR"
+        },
+        "2": {
+            "square": "white",
+            "piece": "WP"
+        },
+        "3": {
+            "square": "black",
+            "piece": null
+        },
+        "4": {
+            "square": "white",
+            "piece": null
+        },
+        "5": {
+            "square": "black",
+            "piece": null
+        },
+        "6": {
+            "square": "white",
+            "piece": null
+        },
+        "7": {
+            "square": "black",
+            "piece": "BP"
+        },
+        "8": {
+            "square": "white",
+            "piece": "BR"
+        }
+    },
+    "b": {
+        "1": {
+            "square": "white",
+            "piece": "WN"
+        },
+        "2": {
+            "square": "black",
+            "piece": "WP"
+        },
+        "3": {
+            "square": "white",
+            "piece": null
+        },
+        "4": {
+            "square": "black",
+            "piece": null
+        },
+        "5": {
+            "square": "white",
+            "piece": null
+        },
+        "6": {
+            "square": "black",
+            "piece": null
+        },
+        "7": {
+            "square": "white",
+            "piece": "BP"
+        },
+        "8": {
+            "square": "black",
+            "piece": "BN"
+        }
+    },
+    "c": {
+        "1": {
+            "square": "black",
+            "piece": "WB"
+        },
+        "2": {
+            "square": "white",
+            "piece": "WP"
+        },
+        "3": {
+            "square": "black",
+            "piece": null
+        },
+        "4": {
+            "square": "white",
+            "piece": null
+        },
+        "5": {
+            "square": "black",
+            "piece": null
+        },
+        "6": {
+            "square": "white",
+            "piece": null
+        },
+        "7": {
+            "square": "black",
+            "piece": "BP"
+        },
+        "8": {
+            "square": "white",
+            "piece": "BB"
+        }
+    },
+    "d": {
+        "1": {
+            "square": "white",
+            "piece": "WQ"
+        },
+        "2": {
+            "square": "black",
+            "piece": "WP"
+        },
+        "3": {
+            "square": "white",
+            "piece": null
+        },
+        "4": {
+            "square": "black",
+            "piece": null
+        },
+        "5": {
+            "square": "white",
+            "piece": null
+        },
+        "6": {
+            "square": "black",
+            "piece": null
+        },
+        "7": {
+            "square": "white",
+            "piece": "BP"
+        },
+        "8": {
+            "square": "black",
+            "piece": "BQ"
+        }
+    },
+    "e": {
+        "1": {
+            "square": "black",
+            "piece": "WK"
+        },
+        "2": {
+            "square": "white",
+            "piece": null
+        },
+        "3": {
+            "square": "black",
+            "piece": null
+        },
+        "4": {
+            "square": "white",
+            "piece": "WP"
+        },
+        "5": {
+            "square": "black",
+            "piece": "BP"
+        },
+        "6": {
+            "square": "white",
+            "piece": null
+        },
+        "7": {
+            "square": "black",
+            "piece": null
+        },
+        "8": {
+            "square": "white",
+            "piece": "BK"
+        }
+    },
+    "f": {
+        "1": {
+            "square": "white",
+            "piece": "WB"
+        },
+        "2": {
+            "square": "black",
+            "piece": "WP"
+        },
+        "3": {
+            "square": "white",
+            "piece": null
+        },
+        "4": {
+            "square": "black",
+            "piece": null
+        },
+        "5": {
+            "square": "white",
+            "piece": null
+        },
+        "6": {
+            "square": "black",
+            "piece": null
+        },
+        "7": {
+            "square": "white",
+            "piece": "BP"
+        },
+        "8": {
+            "square": "black",
+            "piece": "BB"
+        }
+    },
+    "g": {
+        "1": {
+            "square": "black",
+            "piece": "WN"
+        },
+        "2": {
+            "square": "white",
+            "piece": "WP"
+        },
+        "3": {
+            "square": "black",
+            "piece": null
+        },
+        "4": {
+            "square": "white",
+            "piece": null
+        },
+        "5": {
+            "square": "black",
+            "piece": null
+        },
+        "6": {
+            "square": "white",
+            "piece": null
+        },
+        "7": {
+            "square": "black",
+            "piece": "BP"
+        },
+        "8": {
+            "square": "white",
+            "piece": "BN"
+        }
+    },
+    "h": {
+        "1": {
+            "square": "white",
+            "piece": "WR"
+        },
+        "2": {
+            "square": "black",
+            "piece": "WP"
+        },
+        "3": {
+            "square": "white",
+            "piece": null
+        },
+        "4": {
+            "square": "black",
+            "piece": null
+        },
+        "5": {
+            "square": "white",
+            "piece": null
+        },
+        "6": {
+            "square": "black",
+            "piece": null
+        },
+        "7": {
+            "square": "white",
+            "piece": "BP"
+        },
+        "8": {
+            "square": "black",
+            "piece": "BR"
+        }
+    },
+    "move": 3,
+    "curPlayer": "white"
+}
