@@ -10,7 +10,7 @@ class RookManager(MoveMixin):
         pos1 = rook.getPos()
         cols = []
         for i in board.keys():
-            if (i != "move") and (i != "curPlayer"):
+            if (i == "move") or (i == "curPlayer"):
                 continue
             cols.append(i)
         col1 = cols.index(pos1[0])

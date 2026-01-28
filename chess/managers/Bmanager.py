@@ -33,3 +33,9 @@ class BishopManager(MoveMixin):
             return True
         else:
             return False
+        
+    @classmethod
+    def move(cls, bishop=Bishop, pos2=list):
+        board = bishop.getBoard()
+        pos1 = bishop.getPos()
+        super().move(pos1, pos2, board)

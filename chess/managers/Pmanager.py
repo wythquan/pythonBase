@@ -30,7 +30,13 @@ class PawnManager(m.MoveMixin):
                     cols = list(board.keys())
                     xcol = cols.index(col)
                     if (pos2[0] == (cols[xcol+1])) or (pos2[0] == (cols[xcol-1])):
-                        if (board[pos2[0]][int(pos2[1])]["piece"] != None) and (board[pos2[0]][int(pos2[1])]["piece"].getColor() != pawn.getColor()):
+                        enemy = board[pos2[0]][int(pos2[1])]["piece"]               # regular diagonal take
+                        if (enemy != None) and (enemy.getColor() != pawn.getColor()):
+                            return True
+                        enemy = board[pos2[0]][int(pos1[1])]["piece"]               # en passant take
+                        if (enemy != None) and (enemy.__class__.__name__ == "Pawn") and (enemy.getColor() != pawn.getColor()) and (enemy.canBnPas == True):
+                            ePos = enemy.getPos()
+                            board[ePos[0]][int(ePos[1])]["piece"] = None
                             return True
                         else:
                             return False
@@ -60,7 +66,13 @@ class PawnManager(m.MoveMixin):
                     cols = list(board.keys())
                     xcol = cols.index(col)
                     if (pos2[0] == (cols[xcol+1])) or (pos2[0] == (cols[xcol-1])):
-                        if (board[pos2[0]][int(pos2[1])]["piece"] != None) and (board[pos2[0]][int(pos2[1])]["piece"].getColor() != pawn.getColor()):
+                        enemy = board[pos2[0]][int(pos2[1])]["piece"]               # regular diagonal take
+                        if (enemy != None) and (enemy.getColor() != pawn.getColor()):
+                            return True
+                        enemy = board[pos2[0]][int(pos1[1])]["piece"]               # en passant take
+                        if (enemy != None) and (enemy.__class__.__name__ == "Pawn") and (enemy.getColor() != pawn.getColor()) and (enemy.canBnPas == True):
+                            ePos = enemy.getPos()
+                            board[ePos[0]][int(ePos[1])]["piece"] = None
                             return True
                         else:
                             return False

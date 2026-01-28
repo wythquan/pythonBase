@@ -3,7 +3,7 @@ from managers.Bmanager import BishopManager
 from managers.Rmanager import RookManager
 from modules.queen import Queen
 
-class QueenManager(BishopManager, RookManager):
+class QueenManager(MoveMixin):
 
     @classmethod
     def avialableMove(cls, queen=Queen, pos2=list):
@@ -12,7 +12,7 @@ class QueenManager(BishopManager, RookManager):
         pos1 = queen.getPos()
         cols = []
         for i in board.keys():
-            if (i != "move") and (i != "curPlayer"):
+            if (i == "move") or (i == "curPlayer"):
                 continue
             cols.append(i)
         col1 = cols.index(pos1[0])
@@ -27,3 +27,9 @@ class QueenManager(BishopManager, RookManager):
         else:
             #straight move
             return RookManager.avialableMove(rook=queen, pos2=pos2)
+        
+    @classmethod
+    def move(cls, queen=Queen, pos2=list):
+        board = queen.getBoard()
+        pos1 = queen.getPos()
+        super().move(pos1, pos2, board)

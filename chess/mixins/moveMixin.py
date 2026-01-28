@@ -14,6 +14,7 @@ class MoveMixin():
         sPiece = board[col1][row1]["piece"]
         board[col2][row2]["piece"] = sPiece
         board[col1][row1]["piece"] = None
+        sPiece.pos = pos2
         
         Bboard.updateState(board)
 

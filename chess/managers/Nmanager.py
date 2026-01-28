@@ -27,3 +27,9 @@ class NightManager(MoveMixin):
                 return False
         else:
             return False
+        
+    @classmethod
+    def move(cls, night=Night, pos2=list):
+        board = night.getBoard()
+        pos1 = night.getPos()
+        super().move(pos1, pos2, board)
