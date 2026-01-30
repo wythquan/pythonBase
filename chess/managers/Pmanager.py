@@ -1,10 +1,9 @@
-from modules import pawn as p
 from mixins import moveMixin as m
 
 class PawnManager(m.MoveMixin):
     
     @classmethod
-    def avialableMove(cls, pawn=p.Pawn, pos2=list):
+    def avialableMove(cls, pawn, pos2=list):
         Bboard = pawn.getBoard()
         board = Bboard.get_board()
         if pawn.getColor() == "white":
@@ -80,12 +79,14 @@ class PawnManager(m.MoveMixin):
                         return False
                     
     @classmethod
-    def move(cls, pawn=p.Pawn, pos2=list):
+    def move(cls, pawn, pos2=list):
         board = pawn.getBoard()
         pos1 = pawn.getPos()
         super().move(pos1, pos2, board)
         if pawn.hasMoved() == False:
             pawn.canBnPas = True
+        else:
+            pawn.canBnPas = False
         pawn.moved = True
 
     @classmethod

@@ -1,12 +1,12 @@
-from chessboard import chessboard as c
+from chessboard.chessboard import Board
 
 class Piece:
     color: None
     pos: None
-    board: c.Board
+    board: None
     data: None
 
-    def __init__(self, color=str, pos=list, board=c.Board, data=str):
+    def __init__(self, color=str, pos=list, board=Board, data=str):
         self.color = color
         self.pos = pos
         self.board = board

@@ -1,7 +1,8 @@
 import modules.piece as p
 from chessboard.chessboard import Board
+from managers.Kmanager import KingManager
 
-class King(p.Piece):
+class King(p.Piece, KingManager):
 
     hasMoved: None
 

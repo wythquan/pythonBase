@@ -1,7 +1,8 @@
 import modules.piece as p
+from managers.Pmanager import PawnManager
 from chessboard.chessboard import Board
 
-class Pawn(p.Piece):
+class Pawn(p.Piece, PawnManager):
     moved: None
     canBnPas: None
 

@@ -2,7 +2,7 @@
     "a": {
         "1": {
             "square": "black",
-            "piece": null
+            "piece": "WR"
         },
         "2": {
             "square": "white",
@@ -18,7 +18,7 @@
         },
         "5": {
             "square": "black",
-            "piece": null
+            "piece": "BP"
         },
         "6": {
             "square": "white",
@@ -26,25 +26,25 @@
         },
         "7": {
             "square": "black",
-            "piece": "BP"
+            "piece": null
         },
         "8": {
             "square": "white",
-            "piece": null
+            "piece": "BR"
         }
     },
     "b": {
         "1": {
             "square": "white",
-            "piece": "WK"
+            "piece": "WN"
         },
         "2": {
             "square": "black",
-            "piece": "WB"
+            "piece": "WP"
         },
         "3": {
             "square": "white",
-            "piece": "WP"
+            "piece": null
         },
         "4": {
             "square": "black",
@@ -56,21 +56,21 @@
         },
         "6": {
             "square": "black",
-            "piece": "BP"
+            "piece": null
         },
         "7": {
             "square": "white",
-            "piece": "BB"
+            "piece": "BP"
         },
         "8": {
             "square": "black",
-            "piece": "BK"
+            "piece": "BN"
         }
     },
     "c": {
         "1": {
             "square": "black",
-            "piece": null
+            "piece": "WB"
         },
         "2": {
             "square": "white",
@@ -78,7 +78,7 @@
         },
         "3": {
             "square": "black",
-            "piece": "WN"
+            "piece": null
         },
         "4": {
             "square": "white",
@@ -90,7 +90,7 @@
         },
         "6": {
             "square": "white",
-            "piece": "BN"
+            "piece": null
         },
         "7": {
             "square": "black",
@@ -98,13 +98,13 @@
         },
         "8": {
             "square": "white",
-            "piece": null
+            "piece": "BB"
         }
     },
     "d": {
         "1": {
             "square": "white",
-            "piece": "WR"
+            "piece": "WQ"
         },
         "2": {
             "square": "black",
@@ -124,25 +124,25 @@
         },
         "6": {
             "square": "black",
-            "piece": null
+            "piece": "WP"
         },
         "7": {
             "square": "white",
-            "piece": "BP"
+            "piece": null
         },
         "8": {
             "square": "black",
-            "piece": "BR"
+            "piece": "BQ"
         }
     },
     "e": {
         "1": {
             "square": "black",
-            "piece": null
+            "piece": "WK"
         },
         "2": {
             "square": "white",
-            "piece": "WQ"
+            "piece": null
         },
         "3": {
             "square": "black",
@@ -150,11 +150,11 @@
         },
         "4": {
             "square": "white",
-            "piece": "WP"
+            "piece": null
         },
         "5": {
             "square": "black",
-            "piece": "BP"
+            "piece": null
         },
         "6": {
             "square": "white",
@@ -162,11 +162,11 @@
         },
         "7": {
             "square": "black",
-            "piece": "BQ"
+            "piece": "BP"
         },
         "8": {
             "square": "white",
-            "piece": null
+            "piece": "BK"
         }
     },
     "f": {
@@ -271,6 +271,6 @@
             "piece": "BR"
         }
     },
-    "move": 17,
-    "curPlayer": "white"
+    "move": 6,
+    "curPlayer": "black"
 }

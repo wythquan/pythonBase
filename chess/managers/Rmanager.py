@@ -1,10 +1,9 @@
 from mixins.moveMixin import MoveMixin
-from modules.rook import Rook
 
 class RookManager(MoveMixin):
 
     @classmethod
-    def avialableMove(cls, rook=Rook, pos2=list):
+    def avialableMove(cls, rook, pos2=list):
         Bboard = rook.getBoard()
         board = Bboard.get_board()
         pos1 = rook.getPos()
@@ -45,7 +44,7 @@ class RookManager(MoveMixin):
                 return False
 
     @classmethod
-    def move(cls, rook=Rook, pos2=list):
+    def move(cls, rook, pos2=list):
         board = rook.getBoard()
         pos1 = rook.getPos()
         super().move(pos1, pos2, board)

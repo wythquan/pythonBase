@@ -1,10 +1,9 @@
 from mixins.moveMixin import MoveMixin
-from modules.bishop import Bishop
 
 class BishopManager(MoveMixin):
 
     @classmethod
-    def avialableMove(cls, bishop=Bishop, pos2=list):
+    def avialableMove(cls, bishop, pos2=list):
         pos1 = bishop.getPos()
         Bboard = bishop.getBoard()
         board = Bboard.get_board()
@@ -35,7 +34,7 @@ class BishopManager(MoveMixin):
             return False
         
     @classmethod
-    def move(cls, bishop=Bishop, pos2=list):
+    def move(cls, bishop, pos2=list):
         board = bishop.getBoard()
         pos1 = bishop.getPos()
         super().move(pos1, pos2, board)

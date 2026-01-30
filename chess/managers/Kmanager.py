@@ -1,11 +1,9 @@
 from mixins.moveMixin import MoveMixin
-from modules.king import King
-from modules.rook import Rook
 
 class KingManager(MoveMixin):
 
     @classmethod
-    def avialableMove(cls, king=King, pos2=list):
+    def avialableMove(cls, king, pos2=list):
         pos1 = king.getPos()
         Bboard = king.getBoard()
         board = Bboard.get_board()
@@ -44,7 +42,7 @@ class KingManager(MoveMixin):
                     return False
         
     @classmethod
-    def castlingMove(cls, king=King, pos2=list, rook=Rook):
+    def castlingMove(cls, king, rook, pos2=list):
         pos1 = king.getPos()
         Bboard = king.getBoard()
         board = Bboard.get_board()
@@ -70,7 +68,7 @@ class KingManager(MoveMixin):
             return True
         
     @classmethod
-    def move(cls, king=King, pos2=list):
+    def move(cls, king, pos2=list):
         board = king.getBoard()
         pos1 = king.getPos()
         if (pos1 != pos2):

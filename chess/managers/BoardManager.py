@@ -7,12 +7,11 @@ from modules import king as k
 from modules import pawn as p
 from modules import queen as q
 from modules import rook as r
-from chessboard.chessboard import Board
 
 class BoardManager():
 
     @classmethod
-    def setStartPieces(cls, Bboard=Board):
+    def setStartPieces(cls, Bboard):
         board = Bboard.get_board()
         #white
         board["a"][1]["piece"] = r.Rook("white", ["a", 1], Bboard, data="WR")
@@ -154,10 +153,83 @@ class BoardManager():
     
 
     @classmethod
-    def gotChecked(cls, Bboard):
+    def getKingPos(cls, Bboard, color=str):
         board = Bboard.get_board()
-        pass
-    
+        cols = []
+        for col in board.keys():
+            if (col == "move") or (col == "curPlayer"): continue
+            cols.append(col)
+        for col in cols:
+            i = 1
+            while (i <= 8):
+                piece = board[col][i]["piece"]
+                if (piece != None) and (piece.__class__.__name__ == "King") and (piece.getColor() == color):
+                    return piece.getPos()
+
     @classmethod
-    def gotMated(cls):
-        pass
+    def gotChecked(cls, Bboard, color=str):
+        kingPos = cls.getKingPos(Bboard, color)
+        board = Bboard.get_board()
+        cols = []
+        for col in board.keys():
+            if (col == "move") or (col == "curPlayer"): continue
+            cols.append(col)
+        for col in cols:
+            i = 1
+            while (i <= 8):
+                piece = board[col][i]["piece"]
+                if piece == None: continue
+                if piece.getColor() != color:
+                    if piece.avialableMove(piece, kingPos):
+                        return True
+        return False
+
+    
+
+    @classmethod
+    def gotMated(cls, Bboard, color=str):
+        kingPos = cls.getKingPos(Bboard, color)
+        board = Bboard.get_board()
+        cols = []
+        for col in board.keys():
+            if (col == "move") or (col == "curPlayer"): continue
+            cols.append(col)
+        attackingPieces = []
+        for col in cols:
+            i = 1
+            while (i <= 8):
+                piece = board[col][i]["piece"]
+                if piece == None: continue
+                if piece.getColor() != color:
+                    if piece.avialableMove(piece, kingPos):
+                        attackingPieces.append(piece)
+        if len(attackingPieces) == 2:
+            xcol = cols.index(kingPos[0])
+            xrow = int(kingPos[1])
+            piece = board[kingPos[0]][kingPos[1]]["piece"]
+            for col in range(xcol-1, xcol+2):
+                for row in range(xrow-1, xrow+2):
+                    pos2 = [cols[col], row]
+                    if piece.avialableMove(piece, pos2):
+                        oldValue = board[pos2[0]][pos2[1]]["piece"]
+                        piece.move(kingPos, pos2, Bboard)
+                        if not cls.gotChecked(Bboard, color):
+                            piece.move(pos2, kingPos, Bboard)
+                            board[pos2[0]][pos2[1]]["piece"] = oldValue
+                            return True
+                        else:
+                            piece.move(pos2, kingPos, Bboard)
+                            board[pos2[0]][pos2[1]]["piece"] = oldValue
+                            continue
+        else:
+            atPiece = attackingPieces[0]
+            atPiecePos = atPiece.getPos()
+            xcol2 = cols.index(atPiecePos[0])
+            diffRow = abs(kingPos[1] - atPiecePos[1])
+            diffCol = abs(xcol - xcol2)
+            if (diffCol == 0) and (diffRow != 0):
+                pass
+            elif (diffCol != 0) and (diffRow == 0):
+                pass
+            elif (diffCol == diffRow):
+                pass

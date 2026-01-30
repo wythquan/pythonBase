@@ -1,7 +1,8 @@
 import modules.piece as p
+from managers.Bmanager import BishopManager
 from chessboard.chessboard import Board
 
-class Bishop(p.Piece):
+class Bishop(p.Piece, BishopManager):
     
 
     def __init__(self, color=str, pos=list, board=Board, data=str):

@@ -1,27 +1,29 @@
 from chessboard import chessboard as c
 from managers.BoardManager import BoardManager as BM
-from managers.Bmanager import BishopManager
-from managers.Kmanager import KingManager
-from managers.Nmanager import NightManager
-from managers.Pmanager import PawnManager
-from managers.Qmanager import QueenManager
-from managers.Rmanager import RookManager
+
+from modules.bishop import Bishop
+from modules.pawn import Pawn
+from modules.king import King
+from modules.night import Night
+from modules.queen import Queen
+from modules.rook import Rook
+
 
 
 def getManager(piece):
     match piece.__class__.__name__:
         case "Rook":
-            return RookManager
+            return Rook
         case "Pawn":
-            return PawnManager
+            return Pawn
         case "Night":
-            return NightManager
+            return Night
         case "Bishop":
-            return BishopManager
+            return Bishop
         case "Queen":
-            return QueenManager
+            return Queen
         case "King":
-            return KingManager
+            return King
 
 
 initBoard = BM.initBoard()
@@ -82,7 +84,7 @@ def whiteTurn():
         pieceManager.move(piece, pos2)
         if (piece.__class__.__name__ == "Pawn") and (piece.canBnPas == True):
             return pos2
-        return "done"
+        return True
 
 
 def blackTurn():
@@ -135,19 +137,19 @@ def blackTurn():
         pieceManager.move(piece, pos2)
         if (piece.__class__.__name__ == "Pawn") and (piece.canBnPas == True):
             return pos2
-        return "done"
+        return True
 
 
 def game():
     whiteTurnResult = whiteTurn()
     while 1:
         blackTurnResult = blackTurn()
-        if (type(whiteTurnResult) == list) and (blackTurnResult == "done"):     # this means white pushed their pawn 2 squares ahead
-            PawnManager.updateEnPassantTech(whiteTurnResult, Bboard.get_board())        # if white's pawn wasnt taken it will update possibility of En Passant this pawn
-
+        if (type(whiteTurnResult) == list) and (blackTurnResult == True):     # this means white pushed their pawn 2 squares ahead
+            Pawn.updateEnPassantTech(whiteTurnResult, Bboard.get_board())        # if white's pawn wasnt taken it will update possibility of En Passant this pawn
+        
         whiteTurnResult = whiteTurn()
-        if (type(blackTurnResult) == list) and (whiteTurnResult == "done"):     # this means black pushed their pawn 2 squares ahead
-            PawnManager.updateEnPassantTech(blackTurnResult, Bboard.get_board())        # if black's pawn wasnt taken it will update possibility of En Passant this pawn
+        if (type(blackTurnResult) == list) and (whiteTurnResult == True):     # this means black pushed their pawn 2 squares ahead
+            Pawn.updateEnPassantTech(blackTurnResult, Bboard.get_board())        # if black's pawn wasnt taken it will update possibility of En Passant this pawn
 
             
     

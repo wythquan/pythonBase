@@ -1,7 +1,8 @@
 import modules.piece as p
+from managers.Rmanager import RookManager
 from chessboard.chessboard import Board
 
-class Rook(p.Piece):
+class Rook(p.Piece, RookManager):
     
     hasMoved: None
 

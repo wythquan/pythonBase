@@ -1,12 +1,11 @@
 from mixins.moveMixin import MoveMixin
 from managers.Bmanager import BishopManager
 from managers.Rmanager import RookManager
-from modules.queen import Queen
 
 class QueenManager(MoveMixin):
 
     @classmethod
-    def avialableMove(cls, queen=Queen, pos2=list):
+    def avialableMove(cls, queen, pos2=list):
         Bboard = queen.getBoard()
         board = Bboard.get_board()
         pos1 = queen.getPos()
@@ -29,7 +28,7 @@ class QueenManager(MoveMixin):
             return RookManager.avialableMove(rook=queen, pos2=pos2)
         
     @classmethod
-    def move(cls, queen=Queen, pos2=list):
+    def move(cls, queen, pos2=list):
         board = queen.getBoard()
         pos1 = queen.getPos()
         super().move(pos1, pos2, board)

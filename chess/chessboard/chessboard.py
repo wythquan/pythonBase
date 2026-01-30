@@ -1,4 +1,4 @@
-class Board:
+class Board():
     board: dict
     move: int
     curPlayer: str

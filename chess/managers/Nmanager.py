@@ -1,10 +1,9 @@
 from mixins.moveMixin import MoveMixin
-from modules.night import Night
 
 class NightManager(MoveMixin):
 
     @classmethod
-    def avialableMove(cls, night=Night, pos2=list):
+    def avialableMove(cls, night, pos2=list):
         pos1 = night.getPos()
         Bboard = night.getBoard()
         board = Bboard.get_board()
@@ -29,7 +28,7 @@ class NightManager(MoveMixin):
             return False
         
     @classmethod
-    def move(cls, night=Night, pos2=list):
+    def move(cls, night, pos2=list):
         board = night.getBoard()
         pos1 = night.getPos()
         super().move(pos1, pos2, board)
