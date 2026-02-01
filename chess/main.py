@@ -81,9 +81,28 @@ def whiteTurn():
         if not validMove:
             print("\n    Move is not valid.\n")
             continue
+        oldVal = board[pos2[0]][int(pos2[1])]["piece"]
         pieceManager.move(piece, pos2)
+        if BM.gotChecked(Bboard, "white"):
+            pieceManager.move(piece, pos1)
+            board[pos2[0]][int(pos2[1])]["piece"] = oldVal
+            print("\n     This piece is pinned or you have check!!!\n")
+            continue
         if (piece.__class__.__name__ == "Pawn") and (piece.canBnPas == True):
+            if BM.gotChecked(Bboard, "black"):
+                print("\n        !!! BLACK GOT CHECKED !!!\n")
+            Bboard.updateState(board)
             return pos2
+        if BM.gotChecked(Bboard, "black"):
+            if (BM.gotMated(Bboard, "black")):
+                print("\n        !!! BLACK GOT CHECKMATED !!!\n")
+                Bboard.updateState(board)
+                BM.putToJson(board)
+                BM.printBoard(Bboard)
+                return "game"
+            print("\n        !!! BLACK GOT CHECKED !!!\n")
+
+        Bboard.updateState(board)
         return True
 
 
@@ -134,9 +153,28 @@ def blackTurn():
         if not validMove:
             print("\n    Move is not valid.\n")
             continue
+        oldVal = board[pos2[0]][int(pos2[1])]["piece"]
         pieceManager.move(piece, pos2)
+        if BM.gotChecked(Bboard, "black"):
+            pieceManager.move(piece, pos1)
+            board[pos2[0]][int(pos2[1])]["piece"] = oldVal
+            print("\n     This piece is pinned or you have check!!!\n")
+            continue
         if (piece.__class__.__name__ == "Pawn") and (piece.canBnPas == True):
+            if BM.gotChecked(Bboard, "white"):
+                print("\n        !!! WHITE GOT CHECKED !!!\n")
+            Bboard.updateState(board)
             return pos2
+        if BM.gotChecked(Bboard, "white"):
+            if (BM.gotMated(Bboard, "white")):
+                print("\n        !!! WHITE GOT CHECKMATED !!!\n")
+                Bboard.updateState(board)
+                BM.putToJson(board)
+                BM.printBoard(Bboard)
+                return "game"
+            print("\n        !!! WHITE GOT CHECKED !!!\n")
+
+        Bboard.updateState(board)
         return True
 
 
@@ -144,10 +182,16 @@ def game():
     whiteTurnResult = whiteTurn()
     while 1:
         blackTurnResult = blackTurn()
+        if (blackTurnResult == "game"):
+            print("\n        BLACK WON\n")
+            break
         if (type(whiteTurnResult) == list) and (blackTurnResult == True):     # this means white pushed their pawn 2 squares ahead
             Pawn.updateEnPassantTech(whiteTurnResult, Bboard.get_board())        # if white's pawn wasnt taken it will update possibility of En Passant this pawn
         
         whiteTurnResult = whiteTurn()
+        if (whiteTurnResult == "game"):
+            print("\n        WHITE WON\n")
+            break
         if (type(blackTurnResult) == list) and (whiteTurnResult == True):     # this means black pushed their pawn 2 squares ahead
             Pawn.updateEnPassantTech(blackTurnResult, Bboard.get_board())        # if black's pawn wasnt taken it will update possibility of En Passant this pawn
 

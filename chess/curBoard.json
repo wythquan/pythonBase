@@ -18,11 +18,11 @@
         },
         "5": {
             "square": "black",
-            "piece": "BP"
+            "piece": null
         },
         "6": {
             "square": "white",
-            "piece": null
+            "piece": "BP"
         },
         "7": {
             "square": "black",
@@ -64,7 +64,7 @@
         },
         "8": {
             "square": "black",
-            "piece": "BN"
+            "piece": null
         }
     },
     "c": {
@@ -82,7 +82,7 @@
         },
         "4": {
             "square": "white",
-            "piece": null
+            "piece": "WB"
         },
         "5": {
             "square": "black",
@@ -90,7 +90,7 @@
         },
         "6": {
             "square": "white",
-            "piece": null
+            "piece": "BN"
         },
         "7": {
             "square": "black",
@@ -104,7 +104,7 @@
     "d": {
         "1": {
             "square": "white",
-            "piece": "WQ"
+            "piece": null
         },
         "2": {
             "square": "black",
@@ -124,11 +124,11 @@
         },
         "6": {
             "square": "black",
-            "piece": "WP"
+            "piece": null
         },
         "7": {
             "square": "white",
-            "piece": null
+            "piece": "BP"
         },
         "8": {
             "square": "black",
@@ -150,11 +150,11 @@
         },
         "4": {
             "square": "white",
-            "piece": null
+            "piece": "WP"
         },
         "5": {
             "square": "black",
-            "piece": null
+            "piece": "BP"
         },
         "6": {
             "square": "white",
@@ -162,7 +162,7 @@
         },
         "7": {
             "square": "black",
-            "piece": "BP"
+            "piece": null
         },
         "8": {
             "square": "white",
@@ -172,7 +172,7 @@
     "f": {
         "1": {
             "square": "white",
-            "piece": "WB"
+            "piece": null
         },
         "2": {
             "square": "black",
@@ -196,7 +196,7 @@
         },
         "7": {
             "square": "white",
-            "piece": "BP"
+            "piece": "WQ"
         },
         "8": {
             "square": "black",
@@ -271,6 +271,6 @@
             "piece": "BR"
         }
     },
-    "move": 6,
+    "move": 8,
     "curPlayer": "black"
 }

@@ -82,7 +82,7 @@ class BoardManager():
         i = 8
         while (i > 0):
             cols = list(board.keys())
-            print("    ", end="")
+            print(f"    {i} > ", end="")
             for col in cols:
                 if (col == "move") or (col == "curPlayer"): continue
                 if board[col][i]["piece"] != None:
@@ -95,6 +95,8 @@ class BoardManager():
                     print("  ■ ", end=" ")
             print("\n")
             i-=1
+        print("          ^    ^    ^    ^    ^    ^    ^    ^")
+        print("          a    b    c    d    e    f    g    h")
 
     @staticmethod
     def symbolPiece(piece):
@@ -165,6 +167,7 @@ class BoardManager():
                 piece = board[col][i]["piece"]
                 if (piece != None) and (piece.__class__.__name__ == "King") and (piece.getColor() == color):
                     return piece.getPos()
+                i += 1
 
     @classmethod
     def gotChecked(cls, Bboard, color=str):
@@ -178,10 +181,13 @@ class BoardManager():
             i = 1
             while (i <= 8):
                 piece = board[col][i]["piece"]
-                if piece == None: continue
+                if piece == None:
+                    i += 1
+                    continue
                 if piece.getColor() != color:
                     if piece.avialableMove(piece, kingPos):
                         return True
+                i += 1
         return False
 
     
@@ -195,41 +201,275 @@ class BoardManager():
             if (col == "move") or (col == "curPlayer"): continue
             cols.append(col)
         attackingPieces = []
+        xcol = cols.index(kingPos[0])
+        xrow = int(kingPos[1])
         for col in cols:
             i = 1
             while (i <= 8):
                 piece = board[col][i]["piece"]
-                if piece == None: continue
+                if piece == None:
+                    i += 1
+                    continue
                 if piece.getColor() != color:
                     if piece.avialableMove(piece, kingPos):
                         attackingPieces.append(piece)
+                i += 1
         if len(attackingPieces) == 2:
-            xcol = cols.index(kingPos[0])
-            xrow = int(kingPos[1])
             piece = board[kingPos[0]][kingPos[1]]["piece"]
             for col in range(xcol-1, xcol+2):
                 for row in range(xrow-1, xrow+2):
                     pos2 = [cols[col], row]
                     if piece.avialableMove(piece, pos2):
                         oldValue = board[pos2[0]][pos2[1]]["piece"]
-                        piece.move(kingPos, pos2, Bboard)
+                        piece.move(piece, pos2)
                         if not cls.gotChecked(Bboard, color):
-                            piece.move(pos2, kingPos, Bboard)
+                            piece.move(piece, kingPos)
                             board[pos2[0]][pos2[1]]["piece"] = oldValue
-                            return True
+                            return False
                         else:
-                            piece.move(pos2, kingPos, Bboard)
+                            piece.move(piece, kingPos)
                             board[pos2[0]][pos2[1]]["piece"] = oldValue
                             continue
         else:
             atPiece = attackingPieces[0]
             atPiecePos = atPiece.getPos()
             xcol2 = cols.index(atPiecePos[0])
-            diffRow = abs(kingPos[1] - atPiecePos[1])
+            xrow2 = int(atPiecePos[1])
+            diffRow = abs(int(kingPos[1]) - int(atPiecePos[1]))
             diffCol = abs(xcol - xcol2)
             if (diffCol == 0) and (diffRow != 0):
-                pass
+                if (xrow > xrow2):
+                    for i in range(xrow2, xrow):
+                        oldValue = board[cols[xcol]][i]["piece"]
+                        defPos = [cols[xcol], i]
+                        for col in cols:
+                            q = 1
+                            while (q <= 8):
+                                piece = board[col][q]["piece"]
+                                if piece == None:
+                                    q += 1
+                                    continue
+                                if piece.getColor() == color:
+                                    if piece.avialableMove(piece, defPos):
+                                        pos1 = piece.getPos()
+                                        piece.move(piece, defPos)
+                                        if not cls.gotChecked(Bboard, color):
+                                            piece.move(piece, pos1)
+                                            board[defPos[0]][defPos[1]]["piece"] = oldValue
+                                            return False
+                                        else:
+                                            piece.move(piece, pos1)
+                                            board[defPos[0]][defPos[1]]["piece"] = oldValue
+                                            q += 1
+                                            continue
+                                q += 1
+                elif (xrow < xrow2):
+                    for i in range(xrow, xrow2+1):
+                        oldValue = board[cols[xcol]][i]["piece"]
+                        defPos = [cols[xcol], i]
+                        for col in cols:
+                            q = 1
+                            while (q <= 8):
+                                piece = board[col][q]["piece"]
+                                if piece == None:
+                                    q += 1
+                                    continue
+                                if piece.getColor() == color:
+                                    if piece.avialableMove(piece, defPos):
+                                        pos1 = piece.getPos()
+                                        piece.move(piece, defPos)
+                                        if not cls.gotChecked(Bboard, color):
+                                            piece.move(piece, pos1)
+                                            board[defPos[0]][defPos[1]]["piece"] = oldValue
+                                            return False
+                                        else:
+                                            piece.move(piece, pos1)
+                                            board[defPos[0]][defPos[1]]["piece"] = oldValue
+                                            q += 1
+                                            continue
+                                q += 1
+                        
+
+
             elif (diffCol != 0) and (diffRow == 0):
-                pass
+                if (xcol < xcol2):
+                    for i in range(xcol, xcol2+1):
+                        oldValue = board[cols[i]][xrow]["piece"]
+                        defPos = [cols[i], xrow]
+                        for col in cols:
+                            q = 1
+                            while (q <= 8):
+                                piece = board[col][q]["piece"]
+                                if piece == None:
+                                    q += 1
+                                    continue
+                                if piece.getColor() == color:
+                                    if piece.avialableMove(piece, defPos):
+                                        pos1 = piece.getPos()
+                                        piece.move(piece, defPos)
+                                        if not cls.gotChecked(Bboard, color):
+                                            piece.move(piece, pos1)
+                                            board[defPos[0]][defPos[1]]["piece"] = oldValue
+                                            return False
+                                        else:
+                                            piece.move(piece, pos1)
+                                            board[defPos[0]][defPos[1]]["piece"] = oldValue
+                                            q += 1
+                                            continue
+                                q += 1
+                        
+                if (xcol > xcol2):
+                    for i in range(xcol2, xcol):
+                        oldValue = board[cols[i]][xrow]["piece"]
+                        defPos = [cols[i], xrow]
+                        for col in cols:
+                            q = 1
+                            while (q <= 8):
+                                piece = board[col][q]["piece"]
+                                if piece == None:
+                                    q += 1
+                                    continue
+                                if piece.getColor() == color:
+                                    if piece.avialableMove(piece, defPos):
+                                        pos1 = piece.getPos()
+                                        piece.move(piece, defPos)
+                                        if not cls.gotChecked(Bboard, color):
+                                            piece.move(piece, pos1)
+                                            board[defPos[0]][defPos[1]]["piece"] = oldValue
+                                            return False
+                                        else:
+                                            piece.move(piece, pos1)
+                                            board[defPos[0]][defPos[1]]["piece"] = oldValue
+                                            q += 1
+                                            continue
+                                q += 1
+                        
+
             elif (diffCol == diffRow):
-                pass
+                if (xcol2 > xcol) and (xrow2 > xrow):           # from top right to the bottom left
+                    for i in range(0, diffCol+1):
+                        defPos = [cols[xcol2-i], xrow2-i]
+                        oldValue = board[defPos[0]][defPos[1]]["piece"]
+                        for col in cols:
+                            q = 1
+                            while (q <= 8):
+                                piece = board[col][q]["piece"]
+                                if piece == None:
+                                    q += 1
+                                    continue
+                                if piece.getColor() == color:
+                                    if piece.avialableMove(piece, defPos):
+                                        pos1 = piece.getPos()
+                                        piece.move(piece, defPos)
+                                        if not cls.gotChecked(Bboard, color):
+                                            piece.move(piece, pos1)
+                                            board[defPos[0]][defPos[1]]["piece"] = oldValue
+                                            return False
+                                        else:
+                                            piece.move(piece, pos1)
+                                            board[defPos[0]][defPos[1]]["piece"] = oldValue
+                                            q += 1
+                                            continue
+                                q += 1
+
+                elif (xcol2 > xcol) and (xrow2 < xrow):         # from bottom right to the top left
+                    for i in range(0, diffCol+1):
+                        defPos = [cols[xcol2-i], xrow2+i]
+                        oldValue = board[defPos[0]][defPos[1]]["piece"]
+                        for col in cols:
+                            q = 1
+                            while (q <= 8):
+                                piece = board[col][q]["piece"]
+                                if piece == None:
+                                    q += 1
+                                    continue
+                                if piece.getColor() == color:
+                                    if piece.avialableMove(piece, defPos):
+                                        pos1 = piece.getPos()
+                                        piece.move(piece, defPos)
+                                        if not cls.gotChecked(Bboard, color):
+                                            piece.move(piece, pos1)
+                                            board[defPos[0]][defPos[1]]["piece"] = oldValue
+                                            return False
+                                        else:
+                                            piece.move(piece, pos1)
+                                            board[defPos[0]][defPos[1]]["piece"] = oldValue
+                                            q += 1
+                                            continue
+                                q += 1
+
+                elif (xcol2 < xcol) and (xrow2 > xrow):        # from the top left to the bottom right
+                    for i in range(0, diffCol+1):
+                        defPos = [cols[xcol2+i], xrow2-i]
+                        oldValue = board[defPos[0]][defPos[1]]["piece"]
+                        for col in cols:
+                            q = 1
+                            while (q <= 8):
+                                piece = board[col][q]["piece"]
+                                if piece == None:
+                                    q += 1
+                                    continue
+                                if piece.getColor() == color:
+                                    if piece.avialableMove(piece, defPos):
+                                        pos1 = piece.getPos()
+                                        piece.move(piece, defPos)
+                                        if not cls.gotChecked(Bboard, color):
+                                            piece.move(piece, pos1)
+                                            board[defPos[0]][defPos[1]]["piece"] = oldValue
+                                            return False
+                                        else:
+                                            piece.move(piece, pos1)
+                                            board[defPos[0]][defPos[1]]["piece"] = oldValue
+                                            q += 1
+                                            continue
+                                q += 1
+                
+                elif (xcol2 < xcol) and (xrow2 < xrow):         # from the bottom left to the top right
+                    for i in range(0, diffCol+1):
+                        defPos = [cols[xcol2+i], xrow2+i]
+                        oldValue = board[defPos[0]][defPos[1]]["piece"]
+                        for col in cols:
+                            q = 1
+                            while (q <= 8):
+                                piece = board[col][q]["piece"]
+                                if piece == None:
+                                    q += 1
+                                    continue
+                                if piece.getColor() == color:
+                                    if piece.avialableMove(piece, defPos):
+                                        pos1 = piece.getPos()
+                                        piece.move(piece, defPos)
+                                        if not cls.gotChecked(Bboard, color):
+                                            piece.move(piece, pos1)
+                                            board[defPos[0]][defPos[1]]["piece"] = oldValue
+                                            return False
+                                        else:
+                                            piece.move(piece, pos1)
+                                            board[defPos[0]][defPos[1]]["piece"] = oldValue
+                                            continue
+                                q += 1
+
+
+            elif (diffCol != diffRow) and ((diffCol != 0) and (diffRow != 0)):
+                oldValue = board[atPiecePos[0]][atPiecePos[1]]["piece"]
+                for col in cols:
+                    q = 1
+                    while (q <= 8):
+                        piece = board[col][q]["piece"]
+                        if piece == None:
+                            q += 1
+                            continue
+                        if piece.getColor() == color:
+                            if piece.avialableMove(piece, atPiecePos):
+                                pos1 = piece.getPos()
+                                piece.move(piece, atPiecePos)
+                                if not cls.gotChecked(Bboard, color):
+                                    piece.move(piece, pos1, Bboard)
+                                    board[atPiecePos[0]][atPiecePos[1]]["piece"] = oldValue
+                                    return False
+                                else:
+                                    piece.move(piece, pos1, Bboard)
+                                    board[atPiecePos[0]][atPiecePos[1]]["piece"] = oldValue
+                                    continue
+                        q += 1
+        return True

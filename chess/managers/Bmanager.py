@@ -21,7 +21,7 @@ class BishopManager(MoveMixin):
             return False
         stepCol = 1 if col2 > col1 else -1
         stepRow = 1 if row2 > row1 else -1
-        for step in range(1, diffCol-1):
+        for step in range(1, diffCol):
             intermediateCol = cols[col1 + step * stepCol]
             intermediateRow = row1 + step*stepRow
             if board[intermediateCol][intermediateRow]["piece"] != None:
